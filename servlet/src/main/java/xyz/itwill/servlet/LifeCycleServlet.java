@@ -23,6 +23,7 @@ public class LifeCycleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private String name;
+	private String title;
 
 	// 서블릿 클래스로 객체를 생성하기 위한 생성자
 	// => 객체를 생성하면서 실행될 초기화 명령 작성
@@ -48,6 +49,7 @@ public class LifeCycleServlet extends HttpServlet {
 		// ServletContext.getInitParameter(String name) : [web.xml] 파일에서 제공되는 값을 얻어와
 		// 반환하는 메소드
 		name = config.getServletContext().getInitParameter("name");
+		title = config.getInitParameter("title");
 
 		// [web.xml] 파일의 init-param 엘리먼트로 제공되는 값은 ServletConfig 객체의
 		// getInitParameter(String name) 메소드를 호출하여 값을 얻어와 반환
@@ -75,7 +77,7 @@ public class LifeCycleServlet extends HttpServlet {
 		out.println("<title>Servlet</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<h1>서블릿의 생명주기(Left Cycle)</h1>");
+		out.println("<h1>"+title+"</h1>");
 		out.println("<hr>");
 		out.println("<p>" + name + "님, 안녕하세요.</p>");
 		out.println("</body>");
